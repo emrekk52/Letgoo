@@ -1,0 +1,58 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                        <div class="text w-100">
+                            <h2>Kayıt Ekranına Hoş Geldin!</h2>
+                            <p>Zaten Hesabın Var mı?</p>
+                            <a routerLink="/login" class="btn btn-white btn-outline-white ">Giriş Yap</a>
+                        </div>
+                    </div>
+                    <div class="login-wrap p-4 p-lg-5 ">
+                        <div class="d-flex ">
+                            <div class="w-100 ">
+                                <h3 class="mb-4 ">Kayıt Ol</h3>
+                            </div>
+                        </div>
+                        <form class="signin-form ">
+                            <div class="form-group mb-3 ">
+                                <label class="label " for="name ">İsim</label>
+                                <p *ngIf="errorName" style="color:rgb(168, 17, 17);">*İsim alanı gereklidir</p>
+                                <input #name type="text" class="form-control" placeholder="İsim" required>
+                            </div>
+                            <div class="form-group mb-3 ">
+                                <label class="label " for="name ">Soyisim</label>
+                                <p *ngIf="errorSurname" style="color:rgb(168, 17, 17);">*Soyisim alanı gereklidir</p>
+                                <input #surname type="text" class="form-control" placeholder="Soyisim" required>
+                            </div>
+                            <div class="form-group mb-4 ">
+                                <label class="label" for="name ">E posta</label>
+                                <p *ngIf="errorEmail" [innerHTML]="errorEmailMessage" style="color:rgb(168, 17, 17);"></p>
+                                <input #email type="email" class="form-control" placeholder="E posta" required>
+                            </div>
+                            <div class="form-group mb-5 ">
+                                <label class="label " for="password ">Şifre</label>
+                                <p *ngIf="errorPassword" style="color:rgb(168, 17, 17);">*Şifre alanı gereklidir</p>
+                                <input #password type="password" class="form-control" placeholder="Şifre" required>
+                            </div>
+                            <div class="form-group mb-6 ">
+                                <label class="label" for="password ">Şehir</label>
+                                <select (change)="selectChangeHandler($event)" class="form-control" name="sehirler" id="sehirler ">
+                    <option *ngFor="let city of cities"  [value]="city.id">{{city.city_name}}</option>
+                    
+                    </select>
+                            </div>
+                            <div class="form-group ">
+                                <a style="color:white;" (click)="register(name.value,surname.value,email.value,password.value)" class="form-control btn btn-primary submit px-3 ">Kayıt Ol</a>
+                                <p [innerHTML]="responseRegister" style="color:green;text-align: center;"></p>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

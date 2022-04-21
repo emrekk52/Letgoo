@@ -1,0 +1,52 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                        <div class="text w-100">
+                            <h2>Giriş Ekranına Hoş Geldin!</h2>
+                            <p>Hala Kayıt Olmadın Mı?</p>
+                            <a routerLink="/register" class="btn btn-white btn-outline-white">Kayıt Ol</a>
+                        </div>
+                    </div>
+                    <div class="login-wrap p-4 p-lg-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Giriş Yap</h3>
+                            </div>
+                            <div class="w-100">
+                                <p class="social-media d-flex justify-content-end">
+                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                    <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <form (ngSubmit)="login($event)" class="signin-form">
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">E posta</label>
+                                <p *ngIf="errorEmail" style="color:rgb(168, 17, 17);">*E posta alanı gereklidir</p>
+                                <input name="email" type="email" class="form-control" placeholder="E posta" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="password">Şifre</label>
+                                <p *ngIf="errorPassword" style="color:rgb(168, 17, 17);">*Şifre alanı gereklidir</p>
+                                <input name="password" type="password" class="form-control" placeholder="Şifre" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Giriş Yap</button>
+                            </div>
+                            <div class="form-group d-md-flex">
+
+                                <span *ngIf="resultLoginMessageShow" [innerHTML]="resultLoginMessage" style="color:rgb(168, 17, 17);"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
