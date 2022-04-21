@@ -3,8 +3,29 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+   API_PRODUCT_URL:"http://localhost:61061/api/product",
+   API_CITY_URL:"http://localhost:61061/api/city",
+   API_IMAGE_URL:"http://localhost:61061/api/image",
+   API_AUTH_URL:"http://localhost:61061/api/auth",
+   API_PROFILE_URL:"http://localhost:61061/api/profile",
+  
+
+   firebaseConfig : {
+    apiKey: "AIzaSyDmFHaLB2HJDc7WSg9B6FGgZ9eBATcijWw",
+    authDomain: "letgoecommerce.firebaseapp.com",
+    projectId: "letgoecommerce",
+    storageBucket: "letgoecommerce.appspot.com",
+    messagingSenderId: "457172114778",
+    appId: "1:457172114778:web:41f0d03e5ad0fc2c946763",
+    measurementId: "G-HCS6KRBGN8"
+  },
 };
+
+
+
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file
