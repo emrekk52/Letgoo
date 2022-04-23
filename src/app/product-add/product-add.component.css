@@ -1,0 +1,37 @@
+.card-container {
+    justify-content: center;
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.card {
+    border: 1px solid #C25662;
+    border-radius: 7px;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+    width: 18rem;
+    height: 10rem;
+    transition: width 0.2s, height 0.2s, background 0.3s;
+}
+
+.card:hover {
+    width: 18.5rem;
+    height: 12rem;
+    background: #c25663a7;
+}
+
+.input-group {
+    margin: 10px;
+    border: 1px solid #C25662;
+    border-radius: 10px;
+}
+
+.input-group-text {
+    border-radius: 10px;
+}
+
+.input-group-prepend {
+    border-radius: 10px;
+}
