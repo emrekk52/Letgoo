@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Product } from '../models/Product';
+import { Profile } from '../models/Profile';
+import { AuthService } from '../services/auth.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,12 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  constructor() { }
+  myId: number
+  id: number
+  photos: string[]
+  user: Profile
+  product: Product
+  constructor(private router: Router, private productService: ProductService, private auth: AuthService) {
 
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+    this.id = this.router.getCurrentNavigation()?.extras?.state!['id'];
+    this.myId = this.auth.getCurrentUserId()
+  }
 
+
+  getProductById() {
+    this.productService.getProductById(this.id).subscribe(data => {
+
+      console.log(data)
+      this.user = data.user;
+      this.product = data.product;
+      this.photos = data.product.image_list
+
+    })
+  }
 
   ngOnInit() {
+    this.getProductById();
   }
 
 }

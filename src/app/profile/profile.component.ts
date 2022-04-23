@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { getDownloadURL, UploadTask } from '@firebase/storage';
 import { Observable } from 'rxjs';
 import { Product } from '../models/Product';
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private auth: AuthService,
     private api: ApiService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router:Router
   ) { }
 
 
@@ -28,6 +30,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.getProfile();
     this.getMyProducts();
+    this.productService.getFilterByCity(52).subscribe(data=> console.log("gelen veriler "+data.productList))
   }
 
   getProfile() {
@@ -51,13 +54,22 @@ export class ProfileComponent implements OnInit {
 
     const target = event.target as HTMLInputElement;
     if (target.files && target.files.length > 0) {
-      var task = this.api.uploadPhoto(target.files[0])
-      this.uploadPhoto(task)
+
+      var reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = (events: any) => {
+          if (events) {
+            var selectedPhoto: string = events.target.result;
+           this.saveDbPhoto(selectedPhoto)
+          }
+        }
+
+     
     }
   }
 
 
-  uploadPhoto(uploadTask: UploadTask) {
+  /* uploadPhoto(uploadTask: UploadTask) {
     uploadTask.on('state_changed',
       (snapshot) => {
         // Observe state change events such as progress, pause, and resume
@@ -85,7 +97,7 @@ export class ProfileComponent implements OnInit {
         });
       }
     );
-  }
+  } */
 
   photoSaveDbInfo: string
 
@@ -129,6 +141,11 @@ export class ProfileComponent implements OnInit {
          this.getMyProducts()
         }, 2000);
     })
+  }
+
+  routeDetail(id:number){
+    this.router.navigate(['product-detail'], { state: { id: id } });
+
   }
 
 

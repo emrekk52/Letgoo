@@ -32,6 +32,7 @@
                             "node_modules/bootswatch/dist/minty/bootstrap.min.css",
                             "node_modules/alertifyjs/build/css/alertify.min.css",
                             "node_modules/alertifyjs/build/css/themes/bootstrap.min.css",
+                            "node_modules/bootstrap-icons/font/bootstrap-icons.css",
                             "src/styles.css"
                         ],
                         "scripts": [

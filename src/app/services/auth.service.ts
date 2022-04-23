@@ -67,7 +67,7 @@ export class AuthService {
     return user
   }
 
-  getCurrentUserId(){
+  getCurrentUserId():number{
     const user: User = JSON.parse(localStorage.getItem('userProfile')!)
     return user.id
   }

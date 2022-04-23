@@ -18,13 +18,12 @@ import { FormatCityPipe } from './pipes/format-city.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { ApiService } from './services/api.service';
 
-import { environment } from 'src/environments/environment';
 import { ProductService } from './services/product.service';
-import { CurrencyPipe } from '@angular/common';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -32,15 +31,14 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     NavBarComponent,
     FormatCityPipe,
     ProfileComponent,
-    ProductDetailComponent
-  ],
+      ProductAddComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule, ReactiveFormsModule,
-
-
+    NgbModule
   ],
   providers: [AlertifyService, AuthGuard, AuthService, CityService, ApiService, ProductService],
   bootstrap: [AppComponent]

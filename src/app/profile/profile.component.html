@@ -66,13 +66,13 @@
 
 
                     <div class="card" *ngFor="let product of myProducts">
-                        <img height="300" class="card-img-top center" src="{{product.image_list[0]}}">
+                        <img (click)="routeDetail(product.id)" style="cursor: pointer;" height="300" class="card-img-top center" src="{{product.image_list[0]}}">
 
 
                         <div class="card-body ">
-                            <h5 style="color: black;font-weight: bold;overflow: hidden;text-overflow: ellipsis;max-width: 200px;white-space: nowrap; " class="card-title ">Sahibinden sasdasdasdatılık arsa</h5>
+                            <h5 style="color: black;font-weight: bold;overflow: hidden;text-overflow: ellipsis;max-width: 200px;white-space: nowrap; " class="card-title ">{{product.header}}</h5>
                             <p style="color: black; " class="card-text ">{{product.category}}</p>
-                            <p style="color: black; " class="card-text ">{{product.price | currency:'TL':'symbol'}}</p>
+                            <p style="color: black; " class="card-text ">{{product.price | currency:'TL'}}</p>
                         </div>
                         <div class="card-footer">
                             <button (click)="retryPublishOrDown(1,product.id)" *ngIf="product.state==0" type="button" class="btn btn-primary btn-lg btn-block ">Yayından kaldır</button>
