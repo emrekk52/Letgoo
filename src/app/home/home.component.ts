@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { City } from '../models/City';
 import { User } from '../models/User';
+import { AuthService } from '../services/auth.service';
 import { CityService } from '../services/city.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { CityService } from '../services/city.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private cityService: CityService) { }
+  constructor(private cityService: CityService,private auth:AuthService) { }
   city: Observable<City>
   cities: City[]
   ngOnInit() {
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCity(): Observable<City> {
-    const user: User = JSON.parse(localStorage.getItem('user')!)
+    let user:User=this.auth.getCurrentUser();
     return this.cityService.getCity(user.city_id)
   }
 
