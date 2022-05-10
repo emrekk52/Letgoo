@@ -33,6 +33,10 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  checkUserIsMy():boolean{
+    return this.user.id==this.auth.getCurrentUser().id;
+  }
+
 
   profile: Profile
   image: any
