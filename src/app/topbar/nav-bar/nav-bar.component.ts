@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth: AuthService) { }
 
   profile: Profile
 
@@ -21,9 +21,12 @@ export class NavBarComponent implements OnInit {
 
     let user = this.auth.getCurrentUser()
 
-    return this.auth.getUserProfile(user.id).subscribe(data => { 
+    return this.auth.getUserProfile(user.id).subscribe(data => {
       this.profile = data
-     }
+     
+      if (this.profile.photo_url == null)
+        this.profile.photo_url = "../../../assets/user.svg"
+    }
     )
   }
 

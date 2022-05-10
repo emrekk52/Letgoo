@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Product } from '../models/Product';
 import { Profile } from '../models/Profile';
@@ -14,10 +15,12 @@ export class ProductDetailComponent implements OnInit {
 
   myId: number
   id: number
-  photos: string[]
+  photos: any[]
   user: Profile
   product: Product
-  constructor(private router: Router, private productService: ProductService, private auth: AuthService) {
+  _iframe:any
+
+  constructor(private router: Router, private productService: ProductService, private auth: AuthService, private _sanitizer: DomSanitizer) {
 
     this.id = this.router.getCurrentNavigation()?.extras?.state!['id'];
     this.myId = this.auth.getCurrentUserId()
@@ -26,11 +29,14 @@ export class ProductDetailComponent implements OnInit {
 
   getProductById() {
     this.productService.getProductById(this.id).subscribe(data => {
-
-      console.log(data)
+      
+      this._iframe=data.user.iframe
+      
       this.user = data.user;
       this.product = data.product;
-      this.photos = data.product.image_list
+      this.photos = data.product.image_list.map(m => this.sanitizer(m))
+      if (data.user.photo_url == null)
+        {this.user.photo_url = "../../../assets/user.svg"}
 
     })
   }
@@ -38,5 +44,15 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     this.getProductById();
   }
+
+  sanitizer(url: string) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+
+  goToUserProfile(){
+    this.router.navigate(['profile'], { state: { user : this.user } });
+  }
+
 
 }

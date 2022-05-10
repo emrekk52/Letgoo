@@ -203,6 +203,53 @@ data-styled.g3[id="ButtonBasestyles__ButtonBaseStyled-owerk2-0"] {
     height: 24px;
 }
 
+.fLetif {
+    box-sizing: border-box;
+    display: flex;
+}
+
+@media (min-width: 30rem) {
+    .FmqNn {
+        width: 100%;
+        display: flex;
+        -webkit-box-pack: start;
+        justify-content: start;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        border: 1px solid rgb(189, 189, 189);
+        padding: 12px;
+    }
+}
+
+.hjlhFv {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.cbFKkZ {
+    margin: 6px;
+}
+
+@media (min-width: 30rem) {
+    .cFCnyP {
+        width: 160px;
+    }
+}
+
+.cFCnyP {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+.cHQdIm {
+    position: relative;
+    box-sizing: border-box;
+    background-color: white;
+    width: 100%;
+    color: rgb(148, 148, 148);
+}
+
 
 /*!sc*/
 
@@ -210,6 +257,12 @@ data-styled.g3[id="ButtonBasestyles__ButtonBaseStyled-owerk2-0"] {
     fill: #949494;
     width: 24px;
     height: 24px;
+}
+
+.car-extension div {
+    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
 }
 
 

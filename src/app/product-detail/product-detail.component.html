@@ -22,7 +22,9 @@
                 <ngb-carousel *ngIf="photos.length>0">
                     <ng-template ngbSlide *ngFor="let photo of photos">
                         <div class="picsum-img-wrapper">
-                            <img style="width: 1000px;" src="{{photo}}" alt="">
+
+                            <img style="object-fit: none;object-position: center;width: 1000px;height:600px" [src]="photo" alt="">
+
                         </div>
                     </ng-template>
                 </ngb-carousel>
@@ -41,7 +43,8 @@
                         <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 iaMcNr Productstyles__ProductInfo-sc-1qzhqka-14 fkWIHh">
                             <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 jzOfvM">
                                 <div data-testid="price" class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fLetif ProductDetailsstyle__Price-sc-1id69g1-1 gbmBJt">
-                                    <span>{{product.price | currency:'TL '}}</span></div>
+                                    <span>{{product.price | currency:'TL '}}</span>
+                                </div>
                                 <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 dtzhWP">
                                     <button data-testid="favorite-button" class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv ButtonIconstyles-sc-1j4m2yi-2 oCzeN Favoritestyle__FavouriteButtonStyled-zchl57-0 lipegx"><span
                                             class="ButtonIconstyles__Icon-sc-1j4m2yi-0 dYxbWm"><svg width="36"
@@ -70,145 +73,459 @@
                                                     d="M20.803 13.786c.198 2.348-.552 3.951-2.231 5.777-1.538 1.672-3.667 2.64-5.698 2.64h-1.687c-2.005 0-4.036-.943-5.574-2.642-1.444-1.597-1.892-2.805-1.45-5.068.206-1.056.658-2.014 1.096-2.941.523-1.11 1.018-2.159 1.09-3.318l.078-1.289.595 1.145c.464.894.635 1.609.722 2.446 2.229-3.088 3.2-5.763 2.89-7.961L10.553 2l.547.182c.151.05 3.582 1.251 5.21 6.715.315-.792.185-1.892-.104-2.562l-.55-1.274 1.096.845c.928.716 3.726 4.046 4.05 7.88zM12.48 18c1.369 0 2.475-1.124 2.518-2.559.027-.946-.18-2.208-.846-2.91A1.642 1.642 0 0 0 12.937 12a.419.419 0 0 0-.362.213.437.437 0 0 0-.004.426c.298.54.039 1.15-.142 1.465-.412.72-1.202 1.304-1.763 1.304a.64.64 0 0 1-.15-.017.415.415 0 0 0-.385.106.433.433 0 0 0-.124.387C10.222 17.11 11.262 18 12.48 18z">
                                                 </path>
                                             </svg><span>
-                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 RLpep">{{product.created_date | date:'dd.MM.YYYY hh:mm'}}
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 RLpep">
+                                                    {{product.created_date | date:'dd.MM.YYYY hh:mm'}}
                                                 </p>
-                                            </span></div>
+                                            </span>
+                                        </div>
                                         <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fLetif">
                                             <div class="Badge__BadgeStyled-sc-1fje3e2-0 dGiNmt Statsstyles__StatsBadge-sc-1ru6f13-0 fcosXz">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" class="sc-AxjAm dJbVhz">
                                                     <path
                                                         d="M12.186 8.106a3.733 3.733 0 0 1 3.727 3.728 3.733 3.733 0 0 1-3.727 3.728 3.733 3.733 0 0 1-3.727-3.728 3.733 3.733 0 0 1 3.727-3.728zm0 5.966a2.24 2.24 0 0 0 2.236-2.238 2.237 2.237 0 0 0-4.472 0 2.24 2.24 0 0 0 2.236 2.238zm9.67-2.802c-3.113-4.254-6.476-6.379-9.997-6.266-5.697.165-9.577 6.05-9.74 6.3a.752.752 0 0 0 .02.84c3.152 4.424 6.491 6.661 9.928 6.661.122 0 .244-.004.365-.009 5.645-.258 9.313-6.445 9.466-6.708a.75.75 0 0 0-.042-.818">
                                                     </path>
-                                                </svg><span>41</span></div>
+                                                </svg><span>41</span>
+                                            </div>
                                             <div class="Spacer__SpacerStyled-sc-11kae1j-0 gFMrAs">
                                                 <div class="Badge__BadgeStyled-sc-1fje3e2-0 dGiNmt Statsstyles__StatsBadge-sc-1ru6f13-0 fcosXz">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" class="sc-AxjAm dJbVhz">
                                                         <path
                                                             d="M16.224 5c-1.504 0-2.89.676-3.802 1.854L12 7.398l-.421-.544A4.772 4.772 0 0 0 7.776 5C5.143 5 3 7.106 3 9.695c0 5.282 6.47 11.125 9.011 11.125 2.542 0 8.99-5.445 8.99-11.125C21 7.105 18.857 5 16.223 5z">
                                                         </path>
-                                                    </svg><span>3</span></div>
+                                                    </svg><span>3</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div data-test="description" class="Productstyles__ProductDescription-sc-1qzhqka-15 dgTnDJ">
                                         <div class="Spacer__SpacerStyled-sc-11kae1j-0 fgJDUb Boxstyle__BoxStyled-h0e1j3-0 fLetif">
-                                            <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH">{{product.description}} </p>
+                                            <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH">
+                                                {{product.description}} </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 iaMcNr">
-                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fLetif">
-                                <p class="Typographystyles__TypographyStyled-gtxex0-0 llLwzV">Durum:&nbsp;<span class="undefined"><img alt="👍"
-                                            src="https://twemoji.maxcdn.com/2/72x72/1f44d.png"
-                                            style="width: 1em; height: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em;"></span>&nbsp;Yeni gibi
+
+
+
+                        <!-- araçlara özel detay kısmı başlangıç-->
+
+
+                        <div *ngIf="product.car_extension!=null">
+
+                            <p class=" Typographystyles__TypographyStyled-gtxex0-0 llLwzV ">Araba detayları</p>
+
+
+                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 hjlhFv Boxstyle__BoxStyled-h0e1j3-0 fLetif ">
+                                <div class="CarAttributesstyles__CarAttributesContainer-sc-1dyrrlr-0 FmqNn ">
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe "><svg width="24 " height="24 " viewBox="0 0 25 25 " class="sc-AxjAm dJbVhz "><path d="M9.553 16.079h5.684a.474.474 0 1 0 0-.947H9.553a.474.474 0
+                            1 0 0 .947zm6.698-5.21L13.8 9.506a.474.474 0 0 0-.23-.06h-1.176v1.421h3.856zm1.803.947H7.456l-1.894-.474a1.42 1.42 0 0 1-.13.042l-2.633.702a.473.473 0 0 0-.278.203h.365a.474.474 0 0 1 0 .948h-.439v1.42c0 .263.212.475.474.475h.474a.474.474
+                            0 1 1 0 .947H2.92a1.421 1.421 0 0 1-1.42-1.421v-2.114a1.42 1.42 0 0 1 1.055-1.373l2.632-.702a.474.474 0 0 0 .193-.104l1.694-1.506c.26-.231.596-.359.944-.359h5.552c.242 0 .48.062.69.179l3.912 2.173a.474.474 0 0 0 .146.052l4.028.732a1.421
+                            1.421 0 0 1 1.112 1.789l-.464 1.623a1.421 1.421 0 0 1-1.366 1.03h-.233a.474.474 0 1 1 0-.946h.233c.211 0 .397-.14.455-.344l.443-1.551h-.8a.474.474 0 0 1-.334-.811l-3.244-.59a1.42 1.42 0 0 1-.094-.02zM6.532 10.608l1.041.26h3.874v-1.42H8.018a.474.474
+                            0 0 0-.315.119l-1.17 1.041zM18.316 17.5a2.132 2.132 0 1 1 0-4.263 2.132 2.132 0 0 1 0 4.263zm0-.947a1.184 1.184 0 1 0 0-2.369 1.184 1.184 0 0 0 0 2.369zM6.474 17.5a2.132 2.132 0 1 1 0-4.263 2.132 2.132 0 0 1 0 4.263zm0-.947a1.184
+                            1.184 0 1 0 0-2.369 1.184 1.184 0 0 0 0 2.369z "></path></svg></div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Kasa tipi</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carType}}</p></span></div>
+                                        </div>
+                                    </div>
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe "><svg width="24 " height="24 " viewBox="0 0 24 24 " class="sc-AxjAm dJbVhz "><path d="M12.005 5.843c-.159 0-.317.004-.477.011-4.745.238-8.56 4.15-8.683
+                            8.904-.02.767.055 1.531.223 2.271.054.24.274.413.522.413h16.82a.533.533 0 0 0 .52-.407c.15-.664.227-1.348.227-2.035a9.077 9.077 0 0 0-2.848-6.636 9.077 9.077 0 0 0-6.305-2.521m8.406 12.441H3.59c-.648 0-1.2-.44-1.343-1.069a10.036
+                            10.036 0 0 1-.244-2.479c.135-5.192 4.3-9.463 9.483-9.722a9.906 9.906 0 0 1 7.405 2.74A9.912 9.912 0 0 1 22 15c0 .75-.083 1.496-.248 2.221a1.381 1.381 0 0 1-1.34 1.063zm-3.433-8.261a.42.42 0 0 0-.595 0l-3.72 3.72a1.413 1.413 0 0
+                            0-.663-.17 1.428 1.428 0 1 0 1.428 1.428c0-.24-.065-.464-.17-.663l3.72-3.72a.42.42 0 0 0 0-.595zm-11.43 5.399A.421.421 0 0 0 5.97 15a6.037 6.037 0 0 1 8.752-5.383.421.421 0 0 0 .38-.751A6.8 6.8 0 0 0 12 8.128a6.88 6.88 0 0 0-6.873
+                            6.873c0 .232.19.42.421.42z "></path></svg></div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Kilometre</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carKm}}km</p></span></div>
+                                        </div>
+                                    </div>
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe "><svg width="24 " height="24 " viewBox="0 0 24 25 " class="sc-AxjAm dJbVhz "><path d="M19.577 2.5a1.838 1.838 0 0 0-1.833 1.833c0 .687.367 1.282.916
+                            1.557v6.23h-5.04V5.89c.55-.32.917-.916.917-1.557A1.838 1.838 0 0 0 12.705 2.5a1.838 1.838 0 0 0-1.833 1.833c0 .687.367 1.282.916 1.557v6.23h-5.04V5.89c.55-.32.917-.916.917-1.557A1.838 1.838 0 0 0 5.833 2.5 1.838 1.838 0 0 0 4 4.333c0
+                            .687.367 1.282.916 1.557v13.332c-.55.32-.916.916-.916 1.558 0 1.007.825 1.832 1.833 1.832a1.838 1.838 0 0 0 1.832-1.832c0-.688-.366-1.283-.916-1.558v-5.269h5.04v5.315c-.55.32-.917.916-.917 1.557 0 1.008.825 1.833 1.833 1.833a1.838
+                            1.838 0 0 0 1.832-1.833c0-.687-.366-1.282-.916-1.557v-5.315h5.04a1.838 1.838 0 0 0 1.832-1.832V5.89c.55-.322.916-.917.916-1.558A1.838 1.838 0 0 0 19.577 2.5z "></path></svg></div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Vites</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carGear}}</p></span></div>
+                                        </div>
+                                    </div>
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe ">
+                                            <svg width="24 " height="24 " viewBox="0 0 24 24 " class="sc-AxjAm dJbVhz "><path d="M22.884 2.096c-.252-.168-.616-.112-.784.14l-2.212 3.22c-.028.027-.028.055-.056.111-.056.14-.112.28-.14.42-.391 1.68-.028 3.024
+                            1.148 4.227a3.496 3.496 0 0 1 .84 3.528c-.364 1.147-1.372 1.96-2.547 2.183-.28.056-.616.084-.896.084V5.651c0-1.875-1.372-3.247-3.22-3.247H7.74c-1.848 0-3.5 1.372-3.5 3.22V17.52h-.28c-.923 0-1.959.616-1.959 1.54v1.12C2 21.103 3.036
+                            22 3.96 22h14.837c.923 0 1.4-.896 1.4-1.82v-1.12c0-.923-.533-1.54-1.484-1.54h-.476v-.419c.56 0 .756-.028 1.092-.084 1.595-.28 2.883-1.372 3.387-2.94a4.603 4.603 0 0 0-1.092-4.646c-.616-.616-.896-1.232-.98-1.96.028 0 .028 0 .056.028a.775.775
+                            0 0 0 .252.028c.252 0 .504-.084.728-.224.588-.392.728-1.232.364-1.82a1.534 1.534 0 0 0-.504-.448l1.484-2.127c.196-.308.112-.644-.14-.812zm-4.227 16.545c.308 0 .42.112.42.42v1.12c0 .307.028.7-.28.7H3.96c-.308 0-.84-.393-.84-.7v-1.12c0-.308.532-.42.84-.42h14.697zM5.359
+                            17.52V5.623c0-1.231 1.148-2.1 2.38-2.1h7.278c1.232 0 2.1.869 2.1 2.1v11.898H5.359zM21.064 6.35c-.028.028-.084.028-.112.028-.028 0-.084-.028-.112-.084a.21.21 0 0 1 0-.252.06.06 0 0 1 .056-.056c.028-.028.056-.028.084-.028h.028c.028
+                            0 .084.028.112.084.056.112.028.252-.056.308zm-6.83-.868H8.439c-.616 0-1.4.364-1.4.98v2.24c0 .616.784 1.26 1.4 1.26h5.879c.615 0 .84-.644.84-1.26v-2.24c0-.616-.28-.98-.924-.98zm-.196 3.36h-5.88v-2.24h5.88v2.24zm-7.239 5.976v-2.13h.655c.187
+                            0 .355.042.503.127a.882.882 0 0 1 .345.36c.083.155.125.332.125.53v.098c0 .198-.041.374-.122.528a.875.875 0 0 1-.345.358 1.003 1.003 0 0 1-.501.129h-.66zm.439-1.774v1.421h.212c.171 0 .303-.056.393-.168.09-.112.137-.273.14-.481v-.113c0-.216-.046-.38-.135-.492-.09-.112-.221-.167-.394-.167h-.216zm1.926
+                            1.774H8.74v-1.583h.424v1.583zm-.45-1.992a.21.21 0 0 1 .064-.157.239.239 0 0 1 .174-.061c.072 0 .13.02.172.061a.207.207 0 0 1 .065.157.208.208 0 0 1-.065.158.24.24 0 0 1-.172.061.24.24 0 0 1-.172-.061.208.208 0 0 1-.065-.158zm1.526
+                            2.02a.777.777 0 0 1-.566-.213.759.759 0 0 1-.22-.569v-.04a.96.96 0 0 1 .093-.427.676.676 0 0 1 .261-.29.733.733 0 0 1 .385-.101c.217 0 .387.068.512.205.124.136.186.33.186.58v.173H9.883a.393.393 0 0 0 .124.249.374.374 0 0 0 .261.093c.163
+                            0 .29-.059.382-.177l.207.233a.634.634 0 0 1-.257.21.844.844 0 0 1-.36.075zm-.048-1.298a.265.265 0 0 0-.204.085.438.438 0 0 0-.1.243h.588v-.034a.312.312 0 0 0-.076-.217.276.276 0 0 0-.208-.077zm1.796.832c0-.051-.026-.092-.077-.122a.872.872
+                            0 0 0-.246-.08c-.377-.078-.565-.238-.565-.48a.43.43 0 0 1 .175-.35.705.705 0 0 1 .457-.142c.2 0 .362.047.482.142.12.094.18.217.18.368h-.422c0-.06-.02-.11-.059-.15-.039-.039-.1-.059-.182-.059a.253.253 0 0 0-.166.048.152.152 0 0
+                            0-.058.123c0 .047.022.085.066.114a.72.72 0 0 0 .225.074c.105.021.194.045.266.071.223.082.335.224.335.426a.413.413 0 0 1-.186.35.801.801 0 0 1-.48.134.837.837 0 0 1-.353-.071.593.593 0 0 1-.242-.195.452.452 0 0 1-.088-.266h.401a.22.22
+                            0 0 0 .084.172c.051.04.12.06.207.06a.307.307 0 0 0 .184-.046.143.143 0 0 0 .062-.12zm1.411.467a.777.777 0 0 1-.566-.214.759.759 0 0 1-.22-.569v-.04a.96.96 0 0 1 .093-.427.676.676 0 0 1 .261-.29.733.733 0 0 1 .385-.101c.217 0 .387.068.512.205.124.136.186.33.186.58v.173h-1.008a.393.393
+                            0 0 0 .124.249.374.374 0 0 0 .261.093c.163 0 .29-.059.382-.177l.207.233a.634.634 0 0 1-.257.21.844.844 0 0 1-.36.075zm-.048-1.299a.265.265 0 0 0-.204.085.438.438 0 0 0-.1.243h.588v-.034a.312.312 0 0 0-.076-.217.275.275 0 0 0-.208-.077zm1.385
+                            1.27h-.424v-2.247h.424v2.247z "></path></svg></div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Yakıt Türü</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carFuel}}</p></span></div>
+                                        </div>
+                                    </div>
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe ">
+                                            <svg width="24 " height="24 " viewBox="0 0 24 25 " class="sc-AxjAm dJbVhz ">
+                                            <path d="M5.745 15.505h-.857a1.72 1.72 0 0 0-1.715 1.714v3.715a1.72 1.72 0 0 0 1.715 1.714h.857a1.72 1.72 0 0 0 1.714-1.714V19.79h2.686l.971.971c.029.029.057.029.086.057.143.115.343.2.543.2a.963.963 0 0 0
+                            .485-.142.502.502 0 0 0 .143-.115l.915-.971h2.742v1.143a1.72 1.72 0 0 0 1.715 1.714h.857a1.72 1.72 0 0 0 1.714-1.714v-3.715a1.72 1.72 0 0 0-1.714-1.714h-.857a1.72 1.72 0 0 0-1.715 1.714v1.143h-2.742l-.972-.971V6.934h3.714v1.143a1.72
+                            1.72 0 0 0 1.715 1.714h.857a1.72 1.72 0 0 0 1.714-1.714V4.362a1.72 1.72 0 0 0-1.714-1.714h-.857a1.72 1.72 0 0 0-1.715 1.714v1.143H7.46V4.362a1.72 1.72 0 0 0-1.714-1.714h-.857a1.72 1.72 0 0 0-1.715 1.714v3.715A1.72 1.72 0 0 0 4.888
+                            9.79h.857a1.72 1.72 0 0 0 1.714-1.714V6.934h3.429v10.685l-.743.743H7.459V17.22a1.72 1.72 0 0 0-1.714-1.714zm.571 5.429a.573.573 0 0 1-.571.571h-.857a.573.573 0 0 1-.572-.571v-3.715c0-.314.257-.57.572-.57h.857c.314 0 .571.256.571.57v3.715zm10.857-3.715c0-.314.257-.57.572-.57h.857c.314
+                            0 .571.256.571.57v3.715a.573.573 0 0 1-.571.571h-.857a.573.573 0 0 1-.572-.571v-3.715zm-5.457 1.2l.657.658-.657.657-.657-.657.657-.658z "></path></svg>
+                                        </div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Çekiş</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carTraction}}</p></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe ">
+                                            <svg width="24 " height="24 " viewBox="0 0 24 25 " class="sc-AxjAm dJbVhz " xmlns="http://www.w3.org/2000/svg " xmlns:xlink="http://www.w3.org/1999/xlink " version="1.1 " id="Layer_1 " x="0px " y="0px
+                            " viewBox="0 0 512 512 " style="enable-background:new 0 0 512 512; " xml:space="preserve ">
+                                            <g>
+                                                <g>
+                                                    <path d="M490.667,170.667h-33.685c-9.451,0-17.771,6.229-20.459,15.275L415.787,256h-2.304l-9.216-27.989 c-2.901-8.768-11.051-14.677-20.267-14.677h-42.667V192c0-11.776-9.536-21.333-21.333-21.333h-42.667v-21.333h21.333
+                            c11.797,0,21.333-9.557,21.333-21.333V64c0-11.776-9.536-21.333-21.333-21.333H128c-11.797,0-21.333,9.557-21.333,21.333v64 c0,11.776,9.536,21.333,21.333,21.333h21.333v21.333h-64C73.536,170.667,64,180.224,64,192v85.333H42.667V256 c0-11.776-9.536-21.333-21.333-21.333C9.536,234.667,0,244.224,0,256v85.333c0,11.776,9.536,21.333,21.333,21.333
+                            c11.797,0,21.333-9.557,21.333-21.333V320H64v42.667c0,3.157,0.704,6.272,2.069,9.131l30.315,64 c3.52,7.445,11.008,12.203,19.264,12.203h257.131c7.531,0,14.507-3.989,18.347-10.453l19.093-32.213h6.997l19.904,50.496 c3.243,8.149,11.115,13.504,19.861,13.504h33.685c11.797,0,21.333-9.557,21.333-21.333V192
+                            C512,180.224,502.464,170.667,490.667,170.667z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            </svg>
+                                        </div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Motor Gücü</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carEngine}}bg</p></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe ">
+                                            <svg width="24 " height="24 " viewBox="0 0 24 24 " class="sc-AxjAm dJbVhz " xmlns="http://www.w3.org/2000/svg " xmlns:xlink="http://www.w3.org/1999/xlink " version="1.1 " id="Layer_1 " x="0px " y="0px
+                            " viewBox="0 0 512 512 " style="enable-background:new 0 0 512 512; " xml:space="preserve ">
+                                            <g>
+                                                <g>
+                                                    <path d="M15.673,399.151V90.906H122.04V18.808H73.454v56.425H0v339.592h316.082v-15.673H15.673z M89.128,34.482h17.24v40.751 h-17.24V34.482z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M360.174,75.233V18.808h-48.587v56.425H145.55v15.673h272.409v47.02H39.184V153.6h394.449V75.233H360.174z M344.501,75.233h-17.24V34.482h17.24V75.233z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M433.633,321.156V177.11h-15.673v144.045c-43.872,3.975-78.367,40.942-78.367,85.832 c0,47.533,38.672,86.204,86.204,86.204S512,454.521,512,406.988C512,362.098,477.505,325.13,433.633,321.156z
+                            M425.796,477.518 c-38.891,0-70.531-31.64-70.531-70.531c0-38.891,31.639-70.531,70.531-70.531s70.531,31.64,70.531,70.531 C496.327,445.879,464.687,477.518,425.796,477.518z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <polygon points="433.633,399.151 433.633,359.967 417.959,359.967 417.959,414.824 472.816,414.824 472.816,399.151 "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M156.733,179.722v47.02h47.02v-47.02H156.733z M188.08,211.069h-15.673v-15.673h15.673V211.069z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M229.875,179.722v47.02h47.02v-47.02H229.875z M261.222,211.069h-15.673v-15.673h15.673V211.069z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M303.018,179.722v47.02h47.02v-47.02H303.018z M334.365,211.069h-15.673v-15.673h15.673V211.069z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M83.59,252.865v47.02h47.02v-47.02H83.59z M114.937,284.212H99.263v-15.673h15.673V284.212z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M156.733,252.865v47.02h47.02v-47.02H156.733z M188.08,284.212h-15.673v-15.673h15.673V284.212z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M229.875,252.865v47.02h47.02v-47.02H229.875z M261.222,284.212h-15.673v-15.673h15.673V284.212z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M303.018,252.865v47.02h47.02v-47.02H303.018z M334.365,284.212h-15.673v-15.673h15.673V284.212z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M83.59,326.008v47.02h47.02v-47.02H83.59z M114.937,357.355H99.263v-15.673h15.673V357.355z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M156.733,326.008v47.02h47.02v-47.02H156.733z M188.08,357.355h-15.673v-15.673h15.673V357.355z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                                <g>
+                                                    <path d="M229.875,326.008v47.02h0h47.02v-47.02H229.875z M261.222,357.355h-15.673v-15.673h15.673V357.355z "/>
+                                                </g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            </svg>
+                                        </div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Model Yılı</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carYear}}</p></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div data-testid="car-attribute-icon " class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 cFCnyP CarAttributesstyles__AttributeContainer-sc-1dyrrlr-1 cbFKkZ ">
+                                        <div class="CarAttributesstyles__AttributeIcon-sc-1dyrrlr-2 glttqe ">
+                                            <svg width="24 " height="24 " viewBox="0 0 24 24 " class="sc-AxjAm dJbVhz " xmlns="http://www.w3.org/2000/svg " xmlns:xlink="http://www.w3.org/1999/xlink " width="24px " height="24px " viewBox="0 0 24 24
+                            " version="1.1 ">
+                                            
+                                            <g  stroke="none " stroke-width="1 " fill="none " fill-rule="evenodd ">
+                                                <g id="ic_fluent_color_24_filled " fill="#808080 " fill-rule="nonzero ">
+                                                    <path d="M3.83904058,5.85749561 C6.78004581,1.94188971 12.8686707,0.802505202 17.2029394,3.497377 C21.4827525,6.15839057 23.0567972,11.2744655 21.303866,16.0747407 C19.648689,20.6073231 15.2875295,22.403209
+                            12.1442101,20.1231428 C10.9667425,19.2690444 10.5102901,18.1984035 10.2896576,16.4593132 L10.1842745,15.4713913 L10.1388589,15.073954 C10.0162342,14.1399065 9.82780748,13.7214296 9.43453605,13.5022264 C8.89894535,13.2036966 8.54231757,13.1967226
+                            7.83905282,13.4692784 L7.48794193,13.6148779 L7.30920754,13.6928218 C6.29543196,14.1331038 5.62104161,14.2877923 4.76804588,14.1090543 L4.56779442,14.0618665 L4.40426138,14.0152691 C1.61529547,13.1510586 1.20220653,9.36813303 3.83904058,5.85749561
+                            Z M16.7670717,10.5795744 C16.9457489,11.2464071 17.6311701,11.6421352 18.2980028,11.4634579 C18.9648354,11.2847806 19.3605635,10.5993594 19.1818862,9.93252681 C19.003209,9.26569418 18.3177878,8.86996607 17.6509552,9.04864333 C16.9841225,9.2273206
+                            16.5883944,9.91274179 16.7670717,10.5795744 Z M17.2616616,14.0682389 C17.4403389,14.7350716 18.1257601,15.1307997 18.7925927,14.9521224 C19.4594253,14.7734451 19.8551535,14.0880239 19.6764762,13.4211913 C19.4977989,12.7543587 18.8123777,12.3586306
+                            18.1455451,12.5373078 C17.4787125,12.7159851 17.0829844,13.4014063 17.2616616,14.0682389 Z M14.7885641,7.57689062 C14.9672413,8.24372325 15.6526625,8.63945136 16.3194952,8.4607741 C16.9863278,8.28209683 17.3820559,7.59667564 17.2033786,6.92984301
+                            C17.0247014,6.26301038 16.3392802,5.86728227 15.6724475,6.04595953 C15.0056149,6.2246368 14.6098868,6.91005799 14.7885641,7.57689062 Z M14.7600823,16.5752747 C14.9387596,17.2421074 15.6241808,17.6378355 16.2910134,17.4591582 C16.9578461,17.280481
+                            17.3535742,16.5950598 17.1748969,15.9282271 C16.9962196,15.2613945 16.3107985,14.8656664 15.6439658,15.0443437 C14.9771332,15.2230209 14.5814051,15.9084421 14.7600823,16.5752747 Z M11.2631594,6.60529725 C11.4418366,7.27212988 12.1272578,7.66785799
+                            12.7940904,7.48918073 C13.4609231,7.31050346 13.8566512,6.62508227 13.6779739,5.95824964 C13.4992967,5.29141701 12.8138755,4.8956889 12.1470428,5.07436616 C11.4802102,5.25304343 11.0844821,5.93846462 11.2631594,6.60529725 Z " />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                        </div>
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 gAuPYU Boxstyle__BoxStyled-h0e1j3-0 kpfbLK ">
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 RKlIC ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 HOkxS ">Renk</p>
+                                            </div>
+                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fQUVqQ ">
+                                                <span class="CarAttributesstyles__AttributeText-sc-1dyrrlr-3 kiqpeJ ">
+                                                <p class="Typographystyles__TypographyStyled-gtxex0-0 ihfxFH ">{{product.car_extension.carColor}}</p></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- araçlara özel detay kısmı bitiş-->
+
+
+
+
+
+
+
+
+                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 iaMcNr ">
+                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fLetif ">
+                                <p class="Typographystyles__TypographyStyled-gtxex0-0 llLwzV ">Durum:&nbsp;<span class="undefined "><img alt="👍 "
+                                            src="https://twemoji.maxcdn.com/2/72x72/1f44d.png "
+                                            style="width: 1em; height: 1em; margin: 0px 0.05em 0px 0.1em; vertical-align: -0.1em; "></span>&nbsp;Yeni gibi
                                 </p>
                             </div>
-                            <p class="Typographystyles__TypographyStyled-gtxex0-0 euHhtp">Birkaç kez kullanılmış veya paketi yeni açılmış</p>
+                            <p class="Typographystyles__TypographyStyled-gtxex0-0 euHhtp ">Birkaç kez kullanılmış veya paketi yeni açılmış</p>
                         </div>
-                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 iaMcNr">
-                            <p class="Typographystyles__TypographyStyled-gtxex0-0 llLwzV">Konum</p>
-                            <div id="map" data-testid="product-map" class="Mapstyles__MapStaticContainer-sc-1cq7x3g-1 GZhMl">
+                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 iaMcNr ">
+                            <p class="Typographystyles__TypographyStyled-gtxex0-0 llLwzV ">Konum</p>
+                            <div id="map " data-testid="product-map " class="Mapstyles__MapStaticContainer-sc-1cq7x3g-1 GZhMl ">
 
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d773896.2313670253!2d37.39805545!3d40.739318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4062bbbf7ddbf153%3A0xbf0679643b74af29!2sİstanbul!5e0!3m2!1str!2str!4v1650662934836!5m2!1str!2str"
-                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe [src]="sanitizer(_iframe) " width="600 " height="450 " style="border:0; " allowfullscreen=" " loading="lazy " referrerpolicy="no-referrer-when-downgrade "></iframe>
 
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="myId!=user.id" class="sc-AxirZ Productstyles__UserBlockColumn-sc-1qzhqka-23 buEvLI">
-                        <div class="Productstyles__StickyContactSection-sc-1qzhqka-26 iJqnYA">
-                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 gLuxgu">
-                                <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 bhVrru">
-                                    <div class="PaperStyle__PaperStyled-zrnoqb-0 eFoKmM UserBlockstyles__UserBlockPaper-sc-2i37uo-0 gJgQDB">
-                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt">
-                                            <section class="PaperStyle__Section-zrnoqb-1 dfedlE">
-                                                <div class="Productstyles__UserInfo-sc-1qzhqka-16 UyGVz">
-                                                    <div role="button" data-test="item-link-user-profile" class="sc-AxiKw Productstyles__UserInfoLink-sc-1qzhqka-22 jdRbmN">
-                                                        <div class="Avatar__AvatarStyled-sc-13wxhq2-0 idaOnQ">
-                                                            <div class="AvatarStyle__AvatarWrapper-sc-8xbpkx-1 jGyBKS">
-                                                                <div class="avatar">
-                                                                    <a><img src="{{user.image}}" alt="{{user.name}}" decoding="async"></a>
+                    <div *ngIf="myId!=user.id " class="sc-AxirZ Productstyles__UserBlockColumn-sc-1qzhqka-23 buEvLI ">
+                        <div class="Productstyles__StickyContactSection-sc-1qzhqka-26 iJqnYA ">
+                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 gLuxgu ">
+                                <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 bhVrru ">
+                                    <div class="PaperStyle__PaperStyled-zrnoqb-0 eFoKmM UserBlockstyles__UserBlockPaper-sc-2i37uo-0 gJgQDB ">
+                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt ">
+                                            <section class="PaperStyle__Section-zrnoqb-1 dfedlE ">
+                                                <div class="Productstyles__UserInfo-sc-1qzhqka-16 UyGVz ">
+                                                    <div (click)="goToUserProfile() " role="button " class="sc-AxiKw Productstyles__UserInfoLink-sc-1qzhqka-22 jdRbmN ">
+                                                        <div class="Avatar__AvatarStyled-sc-13wxhq2-0 idaOnQ ">
+                                                            <div class="AvatarStyle__AvatarWrapper-sc-8xbpkx-1 jGyBKS ">
+                                                                <div class="avatar ">
+                                                                    <a><img [src]="user.photo_url | othersanitizer " alt="{{user.name}} " decoding="async "></a>
                                                                 </div>
-                                                                <div class="verifiedBadge"><svg fill="#A3CE71" viewBox="0 0 24 24" width="24" height="24" class="SvgIcon__SvgIconStyled-sc-1fos6oe-0 ggSWTD">
-                                                                        <path
-                                                                            d="M12.8896 21.437C12.3283 21.1515 11.6717 21.1515 11.1104 21.437L10.4254 21.7855C9.44377 22.2848 8.25852 21.884 7.74643 20.8797L7.38904 20.1788C7.09621 19.6045 6.56507 19.2029 5.94967 19.0906L5.1986 18.9535C4.12245 18.7571 3.38992 17.7079 3.54294 16.5822L3.64973 15.7966C3.73723 15.1528 3.53435 14.5031 3.09994 14.0358L2.56975 13.4655C1.81008 12.6484 1.81008 11.3516 2.56975 10.5345L3.09994 9.96418C3.53435 9.4969 3.73723 8.84718 3.64973 8.20345L3.54294 7.41779C3.38992 6.29208 4.12245 5.24294 5.1986 5.04651L5.94967 4.90941C6.56507 4.79708 7.09621 4.39553 7.38904 3.82122L7.74643 3.12029C8.25852 2.11599 9.44377 1.71525 10.4254 2.21454L11.1104 2.56301C11.6717 2.84853 12.3283 2.84853 12.8896 2.56301L13.5746 2.21454C14.5562 1.71525 15.7415 2.11598 16.2536 3.12029L16.611 3.82122C16.9038 4.39553 17.4349 4.79708 18.0503 4.90941L18.8014 5.04651C19.8776 5.24294 20.6101 6.29208 20.4571 7.41779L20.3503 8.20345C20.2628 8.84718 20.4656 9.4969 20.9001 9.96417L21.4302 10.5345C22.1899 11.3516 22.1899 12.6484 21.4302 13.4655L20.9001 14.0358C20.4656 14.5031 20.2628 15.1528 20.3503 15.7966L20.4571 16.5822C20.6101 17.7079 19.8776 18.7571 18.8014 18.9535L18.0503 19.0906C17.4349 19.2029 16.9038 19.6045 16.611 20.1788L16.2536 20.8797C15.7415 21.884 14.5562 22.2848 13.5746 21.7855L12.8896 21.437Z">
-                                                                        </path>
-                                                                        <path
-                                                                            d="M14.2365 8.51842C14.6406 7.95869 15.4219 7.83251 15.9817 8.2366C16.5414 8.64069 16.6676 9.42203 16.2635 9.98176L11.9319 15.9818C11.4814 16.6058 10.5793 16.6784 10.0348 16.1343L7.3664 13.4676C6.87809 12.9796 6.87783 12.1881 7.36583 11.6998C7.85382 11.2115 8.64528 11.2113 9.1336 11.6993L10.7639 13.3285L14.2365 8.51842Z"
-                                                                            fill="white"></path>
-                                                                    </svg></div>
+
                                                             </div>
                                                         </div>
-                                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 kxHltA Boxstyle__BoxStyled-h0e1j3-0 dUdbLi">
-                                                            <p class="Typographystyles__TypographyStyled-gtxex0-0 dIA-dSO">
+                                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 kxHltA Boxstyle__BoxStyled-h0e1j3-0 dUdbLi ">
+                                                            <p class="Typographystyles__TypographyStyled-gtxex0-0 dIA-dSO ">
                                                                 {{user.name}} {{user.surname}}</p>
-                                                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 dXHLjh">
-                                                                <div class="Rating__RatingStyled-hhe0e7-0 jNFffP"><svg color="#FFD200" viewBox="0 0 24 24" width="14" height="14" class="SvgIcon__SvgIconStyled-sc-1fos6oe-0 hbbopy">
-                                                                        <path
-                                                                            d="M15.072 8.545l5.073-.02c.274 0 .553.03.819.112.582.18 1.036.593 1.036 1.293 0 .662-.37 1.093-.891 1.47l-4.16 3.178 1.555 5.087c.11.277.153.569.153.885 0 .758-.362 1.45-1.29 1.45-.438 0-.75-.147-1.127-.415l-.142-.103-4.109-3.12-4.068 3.088c-.41.346-.796.55-1.309.55-.854 0-1.311-.694-1.311-1.427 0-.292.057-.572.149-.837l1.6-5.16-4.137-3.16C2.37 11.023 2 10.592 2 9.93c0-.69.445-1.108 1.018-1.29a2.68 2.68 0 0 1 .816-.115l5.092.02 1.576-5.143c.088-.263.16-.443.28-.644.262-.444.638-.758 1.208-.758.569 0 .945.314 1.208.758.119.2.191.38.287.666l1.587 5.12z">
-                                                                        </path>
-                                                                    </svg>
-                                                                    <svg color="#FFD200" viewBox="0 0 24 24" width="14" height="14" class="SvgIcon__SvgIconStyled-sc-1fos6oe-0 hbbopy">
-                                                                        <path
-                                                                            d="M15.072 8.545l5.073-.02c.274 0 .553.03.819.112.582.18 1.036.593 1.036 1.293 0 .662-.37 1.093-.891 1.47l-4.16 3.178 1.555 5.087c.11.277.153.569.153.885 0 .758-.362 1.45-1.29 1.45-.438 0-.75-.147-1.127-.415l-.142-.103-4.109-3.12-4.068 3.088c-.41.346-.796.55-1.309.55-.854 0-1.311-.694-1.311-1.427 0-.292.057-.572.149-.837l1.6-5.16-4.137-3.16C2.37 11.023 2 10.592 2 9.93c0-.69.445-1.108 1.018-1.29a2.68 2.68 0 0 1 .816-.115l5.092.02 1.576-5.143c.088-.263.16-.443.28-.644.262-.444.638-.758 1.208-.758.569 0 .945.314 1.208.758.119.2.191.38.287.666l1.587 5.12z">
-                                                                        </path>
-                                                                    </svg><svg color="#FFD200" viewBox="0 0 24 24" width="14" height="14" class="SvgIcon__SvgIconStyled-sc-1fos6oe-0 hbbopy">
-                                                                        <path
-                                                                            d="M15.072 8.545l5.073-.02c.274 0 .553.03.819.112.582.18 1.036.593 1.036 1.293 0 .662-.37 1.093-.891 1.47l-4.16 3.178 1.555 5.087c.11.277.153.569.153.885 0 .758-.362 1.45-1.29 1.45-.438 0-.75-.147-1.127-.415l-.142-.103-4.109-3.12-4.068 3.088c-.41.346-.796.55-1.309.55-.854 0-1.311-.694-1.311-1.427 0-.292.057-.572.149-.837l1.6-5.16-4.137-3.16C2.37 11.023 2 10.592 2 9.93c0-.69.445-1.108 1.018-1.29a2.68 2.68 0 0 1 .816-.115l5.092.02 1.576-5.143c.088-.263.16-.443.28-.644.262-.444.638-.758 1.208-.758.569 0 .945.314 1.208.758.119.2.191.38.287.666l1.587 5.12z">
-                                                                        </path>
-                                                                    </svg>
-                                                                    <svg color="#FFD200" viewBox="0 0 24 24" width="14" height="14" class="SvgIcon__SvgIconStyled-sc-1fos6oe-0 hbbopy">
-                                                                        <path
-                                                                            d="M15.072 8.545l5.073-.02c.274 0 .553.03.819.112.582.18 1.036.593 1.036 1.293 0 .662-.37 1.093-.891 1.47l-4.16 3.178 1.555 5.087c.11.277.153.569.153.885 0 .758-.362 1.45-1.29 1.45-.438 0-.75-.147-1.127-.415l-.142-.103-4.109-3.12-4.068 3.088c-.41.346-.796.55-1.309.55-.854 0-1.311-.694-1.311-1.427 0-.292.057-.572.149-.837l1.6-5.16-4.137-3.16C2.37 11.023 2 10.592 2 9.93c0-.69.445-1.108 1.018-1.29a2.68 2.68 0 0 1 .816-.115l5.092.02 1.576-5.143c.088-.263.16-.443.28-.644.262-.444.638-.758 1.208-.758.569 0 .945.314 1.208.758.119.2.191.38.287.666l1.587 5.12z">
-                                                                        </path>
-                                                                    </svg><svg color="#FFD200" viewBox="0 0 24 24" width="14" height="14" class="SvgIcon__SvgIconStyled-sc-1fos6oe-0 hbbopy">
-                                                                        <path
-                                                                            d="M15.072 8.545l5.073-.02c.274 0 .553.03.819.112.582.18 1.036.593 1.036 1.293 0 .662-.37 1.093-.891 1.47l-4.16 3.178 1.555 5.087c.11.277.153.569.153.885 0 .758-.362 1.45-1.29 1.45-.438 0-.75-.147-1.127-.415l-.142-.103-4.109-3.12-4.068 3.088c-.41.346-.796.55-1.309.55-.854 0-1.311-.694-1.311-1.427 0-.292.057-.572.149-.837l1.6-5.16-4.137-3.16C2.37 11.023 2 10.592 2 9.93c0-.69.445-1.108 1.018-1.29a2.68 2.68 0 0 1 .816-.115l5.092.02 1.576-5.143c.088-.263.16-.443.28-.644.262-.444.638-.758 1.208-.758.569 0 .945.314 1.208.758.119.2.191.38.287.666l1.587 5.12z">
-                                                                        </path>
-                                                                    </svg>
-                                                                </div>
-                                                            </div>
+
+                                                            <p class="Typographystyles__TypographyStyled-gtxex0-0 dIA-dSO ">
+                                                                {{user.city}}</p>
+
                                                         </div>
-                                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fLetif go-icon">
-                                                            <svg width="24" height="24" viewBox="0 0 24 24" color="#BDBDBD" class="sc-AxjAm dJbVhz">
+                                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 fLetif go-icon ">
+                                                            <svg width="24 " height="24 " viewBox="0 0 24 24 " color="#BDBDBD " class="sc-AxjAm dJbVhz ">
                                                                 <path
-                                                                    d="M14.698 12.01l-5.792 5.793a1.56 1.56 0 1 0 2.208 2.208l6.897-6.896a1.56 1.56 0 0 0 0-2.208l-6.897-6.898a1.564 1.564 0 0 0-2.209 0 1.564 1.564 0 0 0 0 2.209l5.793 5.793z">
+                                                                    d="M14.698 12.01l-5.792 5.793a1.56 1.56 0 1 0 2.208 2.208l6.897-6.896a1.56 1.56 0 0 0 0-2.208l-6.897-6.898a1.564 1.564 0 0 0-2.209 0 1.564 1.564 0 0 0 0 2.209l5.793 5.793z ">
                                                                 </path>
-                                                            </svg></div>
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <hr class="UserBlockstyles__UserBlockHr-sc-2i37uo-1 kwINiI">
-                                                <p class="P__PStyled-mov9gl-0 gMRMBZ UserBlockstyles__UserBlockP-sc-2i37uo-5 dUOhHO">
+                                                <hr class="UserBlockstyles__UserBlockHr-sc-2i37uo-1 kwINiI ">
+                                                <p class="P__PStyled-mov9gl-0 gMRMBZ UserBlockstyles__UserBlockP-sc-2i37uo-5 dUOhHO ">
                                                     Satıcıya mesaj at</p>
-                                                <div class="ChatPeriscopestyles__PeriscopeHolder-sc-5fngxu-5 eErymO">
-                                                    <div class="ChatPeriscopestyles__ContainerKeyboard-sc-5fngxu-1 kEOYcc">
-                                                        <div class="ChatPeriscopestyles__BubblesListContainer-sc-5fngxu-0 hPvKTf">
+                                                <div class="ChatPeriscopestyles__PeriscopeHolder-sc-5fngxu-5 eErymO ">
+                                                    <div class="ChatPeriscopestyles__ContainerKeyboard-sc-5fngxu-1 kEOYcc ">
+                                                        <div class="ChatPeriscopestyles__BubblesListContainer-sc-5fngxu-0 hPvKTf ">
                                                         </div>
-                                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 HLpEg">
-                                                            <div class="ChatInputstyles__AnswersStyled-sc-263syq-0 cjJWsJ">
-                                                                <div class="ChatInputstyles__AnswersHolder-sc-263syq-2 kfzxEv">
-                                                                    <div class="btn btn-primary">Hala satılık mı?</div>
-                                                                    <div class="btn btn-primary">Fiyatta pazarlık payı var mı?</div>
-                                                                    <div class="btn btn-primary">Ne durumda?</div>
+                                                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 HLpEg ">
+                                                            <div class="ChatInputstyles__AnswersStyled-sc-263syq-0 cjJWsJ ">
+                                                                <div class="ChatInputstyles__AnswersHolder-sc-263syq-2 kfzxEv ">
+                                                                    <div class="btn btn-primary ">Hala satılık mı?</div>
+                                                                    <div class="btn btn-primary ">Fiyatta pazarlık payı var mı?</div>
+                                                                    <div class="btn btn-primary ">Ne durumda?</div>
                                                                 </div>
                                                             </div>
                                                             <form>
-                                                                <div class="Spacer__SpacerStyled-sc-11kae1j-0 iZsqho Boxstyle__BoxStyled-h0e1j3-0 iaMcNr">
-                                                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 fglWdr Boxstyle__BoxStyled-h0e1j3-0 eZqSgU">
-                                                                        <div class="Inputstyles__InputWrapperStyled-sc-1djxzfb-0 dpiKZz">
-                                                                            <div class="Inputstyles__InputStyled-sc-1djxzfb-1 gHebaB">
-                                                                                <div class="InputTextFieldstyles__InputTextFieldContainer-sc-1uzvgff-0 kzKGLa">
-                                                                                    <div class="InputTextFieldstyles__InputWrapper-sc-1uzvgff-3 hKHFov">
-                                                                                        <input placeholder="{{user.name}} ile mesajlaş" type="text" autocomplete="off" data-test="chat-input-periscope" maxlength="1000" class="InputTextFieldstyles__InputTextFieldStyled-sc-1uzvgff-1 gleUgF" value=""></div>
+                                                                <div class="Spacer__SpacerStyled-sc-11kae1j-0 iZsqho Boxstyle__BoxStyled-h0e1j3-0 iaMcNr ">
+                                                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 fglWdr Boxstyle__BoxStyled-h0e1j3-0 eZqSgU ">
+                                                                        <div class="Inputstyles__InputWrapperStyled-sc-1djxzfb-0 dpiKZz ">
+                                                                            <div class="Inputstyles__InputStyled-sc-1djxzfb-1 gHebaB ">
+                                                                                <div class="InputTextFieldstyles__InputTextFieldContainer-sc-1uzvgff-0 kzKGLa ">
+                                                                                    <div class="InputTextFieldstyles__InputWrapper-sc-1uzvgff-3 hKHFov ">
+                                                                                        <input placeholder="{{user.name}} ile mesajlaş " type="text " autocomplete="off " data-test="chat-input-periscope " maxlength="1000 " class="InputTextFieldstyles__InputTextFieldStyled-sc-1uzvgff-1
+                            gleUgF " value=" ">
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 JjIgh">
-                                                                        <button type="submit" data-test="product-message-send-button" class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv Buttonstyles-sc-1580olh-0 bOwIoR"><span
-                                                                                class="Buttonstyles__Text-sc-1580olh-2 eVQges">Gönder</span></button>
+                                                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 JjIgh ">
+                                                                        <button type="submit " data-test="product-message-send-button " class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv Buttonstyles-sc-1580olh-0 bOwIoR "><span
+                                                                                class="Buttonstyles__Text-sc-1580olh-2 eVQges ">Gönder</span></button>
                                                                     </div>
                                                                 </div>
                                                             </form>
@@ -218,16 +535,16 @@
                                             </section>
                                         </div>
                                     </div>
-                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 krdlLy Boxstyle__BoxStyled-h0e1j3-0 cTGzaf">
-                                        <div data-test="letgoAd" class="DCAdsstyles__AdvertisementContainer-sc-9bwfmn-1 kyFWOp">
-                                            <div class="DCAdsstyles__AdvertisementWrapper-sc-9bwfmn-2 fqQPvw adwrapper" width="300">
-                                                <div class="adunitContainer">
-                                                    <div class="adBox" id="div-gpt-ad-1538409763493-0"></div>
+                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 krdlLy Boxstyle__BoxStyled-h0e1j3-0 cTGzaf ">
+                                        <div data-test="letgoAd " class="DCAdsstyles__AdvertisementContainer-sc-9bwfmn-1 kyFWOp ">
+                                            <div class="DCAdsstyles__AdvertisementWrapper-sc-9bwfmn-2 fqQPvw adwrapper " width="300 ">
+                                                <div class="adunitContainer ">
+                                                    <div class="adBox " id="div-gpt-ad-1538409763493-0 "></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 gmMDMb Boxstyle__BoxStyled-h0e1j3-0 fLetif Productstyles__OtoplusBenefitsWrapper-sc-1qzhqka-27 jiFxSI">
+                                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 gmMDMb Boxstyle__BoxStyled-h0e1j3-0 fLetif Productstyles__OtoplusBenefitsWrapper-sc-1qzhqka-27 jiFxSI ">
                                     </div>
                                 </div>
                             </div>
@@ -236,21 +553,21 @@
                 </div>
             </div>
         </div>
-        <div class="Container__ContainerStyled-sc-5geka9-0 cExpwr">
-            <div class="Spacer__SpacerStyled-sc-11kae1j-0 dNgnTD">
-                <div class="Productstyles__ShareContainer-sc-1qzhqka-17 ceQVOc">
-                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 ifdQZe">
-                        <div class="HeadingStyle-tpwkns-0 hpzwNj">
+        <div class="Container__ContainerStyled-sc-5geka9-0 cExpwr ">
+            <div class="Spacer__SpacerStyled-sc-11kae1j-0 dNgnTD ">
+                <div class="Productstyles__ShareContainer-sc-1qzhqka-17 ceQVOc ">
+                    <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 ifdQZe ">
+                        <div class="HeadingStyle-tpwkns-0 hpzwNj ">
                         </div>
-                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 cliXtL Boxstyle__BoxStyled-h0e1j3-0 eGKGob"><a data-test="facebook-share-button" rel="nofollow" href="https://www.facebook.com/dialog/feed?app_id=699538486794082&amp;link=https%3A%2F%2Fletgo.onelink.me%2FO2PG%3Fpid%3Daf_app_invites%26c%3Dproduct-detail-share%26af_siteid%3Dweb%26af_channel%3Dfacebook%26position%3Dbottom%26af_dp%3Dletgo%3A%2F%2Fproducts%2F934c4c4e-718a-4f40-a71a-f975fd338ee6%26utm_medium%3Dfacebook%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26af_sub4%3Dbottom%26af_web_dp%3Dhttps%253A%252F%252Fwww.letgo.com%252Ftr-tr%252Fi%252Fsamsung-laptop-4-cekirdek-cift-ekran-kartli-aciklama-okuyunuz-hatasiz_934c4c4e-718a-4f40-a71a-f975fd338ee6%26af_channel%3Dfacebook%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26utm_content%3Dbutton_bottom&amp;picture=https://img.letgo.com/images/72/13/2e/33/72132e33b540877a862a5e288097b6a6.jpeg?impolicy=img_200&amp;diplay=popup&amp;redirect_uri=http://www.facebook.com"
-                                class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv ButtonIconstyles-sc-1j4m2yi-2 cWzZmn"><span
-                                    class="ButtonIconstyles__Icon-sc-1j4m2yi-0 dJCxA-D"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" class="sc-AxjAm dJbVhz">
+                        <div class="Spacer__SpacerStyled-sc-11kae1j-0 cliXtL Boxstyle__BoxStyled-h0e1j3-0 eGKGob "><a data-test="facebook-share-button " rel="nofollow " href="https://www.facebook.com/dialog/feed?app_id=699538486794082&amp;link=https%3A%2F%2Fletgo.onelink.me%2FO2PG%3Fpid%3Daf_app_invites%26c%3Dproduct-detail-share%26af_siteid%3Dweb%26af_channel%3Dfacebook%26position%3Dbottom%26af_dp%3Dletgo%3A%2F%2Fproducts%2F934c4c4e-718a-4f40-a71a-f975fd338ee6%26utm_medium%3Dfacebook%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26af_sub4%3Dbottom%26af_web_dp%3Dhttps%253A%252F%252Fwww.letgo.com%252Ftr-tr%252Fi%252Fsamsung-laptop-4-cekirdek-cift-ekran-kartli-aciklama-okuyunuz-hatasiz_934c4c4e-718a-4f40-a71a-f975fd338ee6%26af_channel%3Dfacebook%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26utm_content%3Dbutton_bottom&amp;picture=https://img.letgo.com/images/72/13/2e/33/72132e33b540877a862a5e288097b6a6.jpeg?impolicy=img_200&amp;diplay=popup&amp;redirect_uri=http://www.facebook.com "
+                                class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv ButtonIconstyles-sc-1j4m2yi-2 cWzZmn "><span
+                                    class="ButtonIconstyles__Icon-sc-1j4m2yi-0 dJCxA-D "><svg width="24 " height="24 "
+                                        viewBox="0 0 24 24 " class="sc-AxjAm dJbVhz ">
                                         <path
-                                            d="M13.213 5.22c-.89.446-.606 3.316-.606 3.316h3.231v2.907h-3.23v10.359H8.773V11.444H6.39V8.536h2.423c-.221 0 .12-2.845.146-3.114.136-1.428 1.19-2.685 2.544-3.153 1.854-.638 3.55-.286 5.385.17l-.484 2.504s-2.585-.455-3.191.277z">
+                                            d="M13.213 5.22c-.89.446-.606 3.316-.606 3.316h3.231v2.907h-3.23v10.359H8.773V11.444H6.39V8.536h2.423c-.221 0 .12-2.845.146-3.114.136-1.428 1.19-2.685 2.544-3.153 1.854-.638 3.55-.286 5.385.17l-.484 2.504s-2.585-.455-3.191.277z ">
                                         </path>
                                     </svg></span></a>
-                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 sMHdI"><a data-test="twitter-share-button" href="https://twitter.com/intent/tweet?text=letgo'da%20buldu%C4%9Fum%20bu%20harika%20teklife%20g%C3%B6z%20at!%20https%3A%2F%2Fletgo.onelink.me%2FO2PG%3Fpid%3Daf_app_invites%26c%3Dproduct-detail-share%26af_siteid%3Dweb%26af_channel%3Dtwitter%26position%3Dbottom%26af_dp%3Dletgo%3A%2F%2Fproducts%2F934c4c4e-718a-4f40-a71a-f975fd338ee6%26utm_medium%3Dtwitter%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26af_sub4%3Dbottom%26af_web_dp%3Dhttps%253A%252F%252Fwww.letgo.com%252Ftr-tr%252Fi%252Fsamsung-laptop-4-cekirdek-cift-ekran-kartli-aciklama-okuyunuz-hatasiz_934c4c4e-718a-4f40-a71a-f975fd338ee6%26af_channel%3Dtwitter%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26utm_content%3Dbutton_bottom"
+                            <div class="Spacer__SpacerStyled-sc-11kae1j-0 sMHdI "><a data-test="twitter-share-button " href="https://twitter.com/intent/tweet?text=letgo 'da%20buldu%C4%9Fum%20bu%20harika%20teklife%20g%C3%B6z%20at!%20https%3A%2F%2Fletgo.onelink.me%2FO2PG%3Fpid%3Daf_app_invites%26c%3Dproduct-detail-share%26af_siteid%3Dweb%26af_channel%3Dtwitter%26position%3Dbottom%26af_dp%3Dletgo%3A%2F%2Fproducts%2F934c4c4e-718a-4f40-a71a-f975fd338ee6%26utm_medium%3Dtwitter%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26af_sub4%3Dbottom%26af_web_dp%3Dhttps%253A%252F%252Fwww.letgo.com%252Ftr-tr%252Fi%252Fsamsung-laptop-4-cekirdek-cift-ekran-kartli-aciklama-okuyunuz-hatasiz_934c4c4e-718a-4f40-a71a-f975fd338ee6%26af_channel%3Dtwitter%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26utm_content%3Dbutton_bottom"
                                     rel="nofollow" class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv ButtonIconstyles-sc-1j4m2yi-2 fftBOX"><span
                                         class="ButtonIconstyles__Icon-sc-1j4m2yi-0 dJCxA-D"><svg width="24" height="24"
                                             viewBox="0 0 24 24" class="sc-AxjAm dJbVhz">
@@ -258,7 +575,7 @@
                                                 d="M21.744 6.236a7.945 7.945 0 0 1-1.383.466 4.313 4.313 0 0 0 1.138-1.813.226.226 0 0 0-.33-.263 7.982 7.982 0 0 1-2.116.874.56.56 0 0 1-.502-.125 4.325 4.325 0 0 0-2.862-1.08c-.457 0-.918.07-1.37.211a4.19 4.19 0 0 0-2.825 3.02 4.614 4.614 0 0 0-.102 1.592.16.16 0 0 1-.174.175 11.342 11.342 0 0 1-7.795-4.165.226.226 0 0 0-.37.029 4.322 4.322 0 0 0-.587 2.175 4.32 4.32 0 0 0 1.29 3.083 3.876 3.876 0 0 1-.987-.382.226.226 0 0 0-.336.195 4.33 4.33 0 0 0 2.527 3.99 3.873 3.873 0 0 1-.821-.069.226.226 0 0 0-.258.291 4.335 4.335 0 0 0 3.424 2.949 7.982 7.982 0 0 1-4.47 1.358h-.5c-.155 0-.285.1-.325.249a.343.343 0 0 0 .165.379 11.872 11.872 0 0 0 5.965 1.608c1.834 0 3.549-.364 5.098-1.081a11.258 11.258 0 0 0 3.73-2.795 12.254 12.254 0 0 0 2.284-3.826c.508-1.356.776-2.804.776-4.186v-.066c0-.222.1-.43.276-.573a8.55 8.55 0 0 0 1.72-1.888c.126-.188-.073-.424-.28-.332z">
                                             </path>
                                         </svg></span></a></div>
-                            <a data-test="mail-share-button" href="mailto:?subject=letgo'da%20buldu%C4%9Fum%20bu%20harika%20teklife%20g%C3%B6z%20at!&amp;body=Merhaba%2C%20%0ABu%20teklifi%20letgo'da%20buldum.%20Ne%20d%C3%BC%C5%9F%C3%BCn%C3%BCyorsun%3F%0ASamsung%20laptop%204%20%C3%A7ekirdek%20%C3%A7ift%20ekran%20kartl%C4%B1%20a%C3%A7%C4%B1klama%20okuyunuz%20hatas%C4%B1z%0Ahttps%3A%2F%2Fletgo.onelink.me%2FO2PG%3Fpid%3Daf_app_invites%26c%3Dproduct-detail-share%26af_siteid%3Dweb%26af_channel%3Demail%26position%3Dbottom%26af_dp%3Dletgo%3A%2F%2Fproducts%2F934c4c4e-718a-4f40-a71a-f975fd338ee6%26utm_medium%3Demail%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26af_sub4%3Dbottom%26af_web_dp%3Dhttps%253A%252F%252Fwww.letgo.com%252Ftr-tr%252Fi%252Fsamsung-laptop-4-cekirdek-cift-ekran-kartli-aciklama-okuyunuz-hatasiz_934c4c4e-718a-4f40-a71a-f975fd338ee6%26af_channel%3Demail%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26utm_content%3Dbutton_bottom"
+                            <a data-test="mail-share-button" href="mailto:?subject=letgo'da%20buldu%C4%9Fum%20bu%20harika%20teklife%20g%C3%B6z%20at!&amp;body=Merhaba%2C%20%0ABu%20teklifi%20letgo 'da%20buldum.%20Ne%20d%C3%BC%C5%9F%C3%BCn%C3%BCyorsun%3F%0ASamsung%20laptop%204%20%C3%A7ekirdek%20%C3%A7ift%20ekran%20kartl%C4%B1%20a%C3%A7%C4%B1klama%20okuyunuz%20hatas%C4%B1z%0Ahttps%3A%2F%2Fletgo.onelink.me%2FO2PG%3Fpid%3Daf_app_invites%26c%3Dproduct-detail-share%26af_siteid%3Dweb%26af_channel%3Demail%26position%3Dbottom%26af_dp%3Dletgo%3A%2F%2Fproducts%2F934c4c4e-718a-4f40-a71a-f975fd338ee6%26utm_medium%3Demail%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26af_sub4%3Dbottom%26af_web_dp%3Dhttps%253A%252F%252Fwww.letgo.com%252Ftr-tr%252Fi%252Fsamsung-laptop-4-cekirdek-cift-ekran-kartli-aciklama-okuyunuz-hatasiz_934c4c4e-718a-4f40-a71a-f975fd338ee6%26af_channel%3Demail%26utm_source%3Dweb%26utm_campaign%3Dproduct-detail-share%26utm_content%3Dbutton_bottom"
                                 rel="nofollow" class="ButtonBasestyles__ButtonBaseStyled-owerk2-0 bKqNHv ButtonIconstyles-sc-1j4m2yi-2 oCzeN"><span
                                     class="ButtonIconstyles__Icon-sc-1j4m2yi-0 dYxbWm"><svg width="24" height="24"
                                         viewBox="0 0 24 24" class="sc-AxjAm dJbVhz">

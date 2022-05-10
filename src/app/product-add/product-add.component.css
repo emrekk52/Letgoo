@@ -35,3 +35,13 @@
 .input-group-prepend {
     border-radius: 10px;
 }
+
+.remove {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
+.remove:hover {
+    color: white;
+}

@@ -21,6 +21,8 @@ import { ApiService } from './services/api.service';
 import { ProductService } from './services/product.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { SanitizerPipe } from './pipes/sanitizer.pipe';
+import { FilterProductComponent } from './filter-product/filter-product.component';
 
 @NgModule({
   declarations: [	
@@ -30,8 +32,10 @@ import { ProductAddComponent } from './product-add/product-add.component';
     HomeComponent,
     NavBarComponent,
     FormatCityPipe,
+    SanitizerPipe,
     ProfileComponent,
-      ProductAddComponent
+    ProductAddComponent,
+      FilterProductComponent
    ],
   imports: [
     BrowserModule,

@@ -6,7 +6,7 @@
                     <div class="Spacer__SpacerStyled-sc-11kae1j-0 eoQYxt Boxstyle__BoxStyled-h0e1j3-0 iaMcNr">
                         <div data-test="profile-avatar" class="Avatar__AvatarStyled-sc-13wxhq2-0 keRNqc HybridAvatarstyles__HybridAvatarStyled-sc-5h907d-0 bqHQrK">
                             <div class="AvatarStyle__AvatarWrapper-sc-8xbpkx-1 jGyBKS">
-                                <div class="avatar"><img src="{{image}}" decoding="async"></div>
+                                <div class="avatar"><img [src]="image | sanitizer" decoding="async"></div>
                                 <p style="color: green;font-weight: 700;" *ngIf="photoSaveDbInfo>''" [innerHTML]="photoSaveDbInfo"></p>
 
 
@@ -66,7 +66,7 @@
 
 
                     <div class="card" *ngFor="let product of myProducts">
-                        <img (click)="routeDetail(product.id)" style="cursor: pointer;" height="300" class="card-img-top center" src="{{product.image_list[0]}}">
+                        <img (click)="routeDetail(product.id)" style="cursor: pointer;object-fit: cover;" height="300" class="card-img-top center" [src]="product.image_list[0] | sanitizer">
 
 
                         <div class="card-body ">

@@ -7,8 +7,9 @@ export class Profile{
     email: string
     password: string
     city_id: number
-    image:string
+    photo_url:string
     city:string
+    iframe:string
 
 
 }

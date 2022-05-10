@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { getDownloadURL, UploadTask } from '@firebase/storage';
 import { Observable } from 'rxjs';
@@ -17,29 +18,50 @@ import { ProductService } from '../services/product.service';
 })
 export class ProfileComponent implements OnInit {
 
+
+
   constructor(private auth: AuthService,
-    private api: ApiService,
+
     private productService: ProductService,
-    private router:Router
-  ) { }
+    private router: Router
+  ) {
+
+
+    if (this.router.getCurrentNavigation()?.extras.state != undefined)
+      this.user = this.router.getCurrentNavigation()?.extras?.state!['user'];
+
+
+  }
 
 
   profile: Profile
-  image: string
+  image: any
+  user: User
+
+  changeProductStateMessage: string
+  _product_id: number
+  photoSaveDbInfo: string
+  myProducts: Product[]
 
   ngOnInit() {
+    if (this.user == undefined)
+      this.user = this.auth.getCurrentUser()
     this.getProfile();
     this.getMyProducts();
-    this.productService.getFilterByCity(52).subscribe(data=> console.log("gelen veriler "+data.productList))
+
   }
 
   getProfile() {
 
-    let user = this.auth.getCurrentUser()
 
-    return this.auth.getUserProfile(user.id).subscribe(data => {
+    return this.auth.getUserProfile(this.user.id).subscribe(data => {
       this.profile = data
-      this.image = data.image
+
+      if (this.profile.photo_url == null)
+        this.image = "../../../assets/user.svg"
+      else
+        this.image = data.photo_url
+
     }
     )
   }
@@ -56,15 +78,15 @@ export class ProfileComponent implements OnInit {
     if (target.files && target.files.length > 0) {
 
       var reader = new FileReader();
-        reader.readAsDataURL(target.files[0]);
-        reader.onload = (events: any) => {
-          if (events) {
-            var selectedPhoto: string = events.target.result;
-           this.saveDbPhoto(selectedPhoto)
-          }
+      reader.readAsDataURL(target.files[0]);
+      reader.onload = (events: any) => {
+        if (events) {
+          var selectedPhoto: string = events.target.result;
+          this.saveDbPhoto(selectedPhoto)
         }
+      }
 
-     
+
     }
   }
 
@@ -99,7 +121,7 @@ export class ProfileComponent implements OnInit {
     );
   } */
 
-  photoSaveDbInfo: string
+
 
   saveDbPhoto(downloadUrl: string) {
     this.image = downloadUrl;
@@ -117,33 +139,32 @@ export class ProfileComponent implements OnInit {
     window.location.reload();
   }
 
-  myProducts: Product[]
+
 
   getMyProducts() {
-    let myId = Number(this.auth.getCurrentUserId())
+    let myId = Number(this.user.id)
     this.productService.getMyProducts(myId).subscribe(data => {
       this.myProducts = data.productList
-      console.log(data)
+
     })
 
   }
 
-  changeProductStateMessage: string
-  _product_id:number
+
 
   retryPublishOrDown(state: number, product_id: number) {
-    this._product_id=product_id
+    this._product_id = product_id
     this.productService.changeProductState(state, product_id).subscribe(data => {
       this.changeProductStateMessage = data;
       if (data != "*Ürünün id bilgisine ulaşılamadı")
         setTimeout(() => {
           this.changeProductStateMessage = "";
-         this.getMyProducts()
+          this.getMyProducts()
         }, 2000);
     })
   }
 
-  routeDetail(id:number){
+  routeDetail(id: number) {
     this.router.navigate(['product-detail'], { state: { id: id } });
 
   }
