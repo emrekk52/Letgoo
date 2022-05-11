@@ -10,6 +10,8 @@ export const environment = {
    API_AUTH_URL:"http://localhost:61061/api/auth",
    API_PROFILE_URL:"http://localhost:61061/api/profile",
    API_CATEGORY_URL:"http://localhost:61061/api/category",
+   API_MESSAGE_URL:"http://localhost:61061/api/message",
+   
   
 
    firebaseConfig : {

@@ -23,9 +23,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { SanitizerPipe } from './pipes/sanitizer.pipe';
 import { FilterProductComponent } from './filter-product/filter-product.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -35,7 +36,8 @@ import { FilterProductComponent } from './filter-product/filter-product.componen
     SanitizerPipe,
     ProfileComponent,
     ProductAddComponent,
-      FilterProductComponent
+      FilterProductComponent,
+      MessageComponent
    ],
   imports: [
     BrowserModule,

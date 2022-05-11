@@ -164,7 +164,7 @@ export class ProfileComponent implements OnInit {
         setTimeout(() => {
           this.changeProductStateMessage = "";
           this.getMyProducts()
-        }, 2000);
+        }, 1000);
     })
   }
 
