@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
     this.auth.login(user).then(data => {
 
       if (data?.status) {
-        this.router.navigateByUrl('/home');
+        //this.router.navigateByUrl('/home');
+        this.refresh()
       } else {
         this.resultLoginMessageShow = true
         this.resultLoginMessage = data?.message!
@@ -51,6 +52,11 @@ export class LoginComponent implements OnInit {
 
 
 
+  }
+
+
+  refresh() {
+    window.location.reload();
   }
 
 

@@ -30,9 +30,13 @@
 
             </div>
 
+            <div *ngIf="myProducts.length==0" class="sc-AxiKw cCJbmi">
 
+                <span style="margin:auto;">Herhangi bir ürün bulunmamaktadır!</span>
 
-            <div data-testid="profile-grid " class="sc-AxiKw cCJbmi ">
+            </div>
+
+            <div *ngIf="myProducts.length>0" class="sc-AxiKw cCJbmi">
 
 
                 <div class="card-columns ">

@@ -17,7 +17,6 @@ import { CityService } from './services/city.service';
 import { FormatCityPipe } from './pipes/format-city.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { ApiService } from './services/api.service';
-
 import { ProductService } from './services/product.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from './product-add/product-add.component';

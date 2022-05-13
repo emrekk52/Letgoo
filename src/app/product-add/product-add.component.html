@@ -1,0 +1,159 @@
+<div class="container">
+
+    <button style="margin:10px;" *ngIf="selectedPhotos.length<10" class="btn btn-primary">
+        Resim ekle
+        <input style="width: 100%;height: 100%;opacity: 0;" multiple  type="file" accept="image/*" (change)="processFile($event)">
+
+    </button>
+
+    <div class="card-container">
+
+        <div *ngFor="let photo of selectedPhotos; let i = index">
+
+            <div class="card">
+                <i class="fa fa-times remove" (click)="removeSelectedPhotos(i)"></i>
+                <img style="height: 100%; width: 100%;" class="card-img-top" src="{{photo}}" alt="">
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon3">Ürün başlığı</span>
+        <input type="text" [(ngModel)]="header" class="form-control" placeholder="Başlık giriniz" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <p *ngIf="headerMessage>''" [innerHTML]="headerMessage" style="color: red;"></p>
+
+
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Kategori</label>
+        </div>
+        <select (change)="setCategoryId($event)" class="custom-select" id="inputGroupSelect01">
+        
+          <option *ngFor="let category of categories"  value="{{category.id}}">{{category.name}}</option>
+        
+        </select>
+    </div>
+
+
+    <div class="input-group mb-3">
+        <span class="input-group-text">Fiyat ₺</span>
+        <input [(ngModel)]="price" type="number" class="form-control">
+    </div>
+    <p *ngIf="priceMessage>''" [innerHTML]="priceMessage" style="color: red;"></p>
+
+
+    <div [style.display]="category_id==13 ? 'block' : 'none' ">
+
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Araç Tipi</label>
+            </div>
+            <select (change)="setChooseCarType($event)" class="custom-select">
+            
+              <option *ngFor="let type of carTypeList"  value="{{type}}">{{type}}</option>
+            
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Model Yılı</label>
+            </div>
+            <select (change)="setChooseCarYear($event)" class="custom-select">
+            
+              <option *ngFor="let year of carYearList"  value="{{year}}">{{year}}</option>
+            
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Motor Gücü</label>
+            </div>
+            <select (change)="setChooseCarEngine($event)" class="custom-select">
+            
+              <option *ngFor="let engine of carEngineList"  value="{{engine}}">{{engine}}</option>
+            
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Vites Tipi</label>
+            </div>
+            <select (change)="setChooseCarGear($event)" class="custom-select">
+            
+              <option *ngFor="let gear of carGearList"  value="{{gear}}">{{gear}}</option>
+            
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Renk</label>
+            </div>
+            <select (change)="setChooseCarColor($event)" class="custom-select">
+            
+              <option *ngFor="let color of carColorList"  value="{{color}}">{{color}}</option>
+            
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Yakıt</label>
+            </div>
+            <select (change)="setChooseCarFuel($event)" class="custom-select">
+            
+              <option *ngFor="let fuel of carFuelList"  value="{{fuel}}">{{fuel}}</option>
+            
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Çekiş</label>
+            </div>
+            <select (change)="setChooseCarTraction($event)" class="custom-select">
+            
+              <option *ngFor="let traction of carTractionList"  value="{{traction}}">{{traction}}</option>
+            
+            </select>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3">Km</span>
+            <input type="number" [(ngModel)]="chooseCarKm" class="form-control" placeholder="Araç km giriniz" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <p *ngIf="carKmMessage>''" [innerHTML]="carKmMessage" style="color: red;"></p>
+
+
+    </div>
+
+
+    <div class="input-group">
+        <span class="input-group-text">Açıklama</span>
+        <textarea maxlength="200" class="form-control" placeholder="Açıklama giriniz" [(ngModel)]="description" aria-label="With textarea"></textarea>
+    </div>
+    <p *ngIf="descriptionMessage>''" [innerHTML]="descriptionMessage" style="color: red;"></p>
+
+    <button (click)="addProduct()" style="width: 100%;" class="btn btn-danger">Sat</button>
+    <p *ngIf="chooseMessage>''" [innerHTML]="chooseMessage" style="color: red;"></p>
+
+    <p *ngIf="resultMessage>''" [innerHTML]="resultMessage" style="color: green;font-weight: bold;font-size: large;"></p>
+
+
+</div>
