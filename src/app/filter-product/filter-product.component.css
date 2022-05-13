@@ -1,0 +1,24 @@
+.container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.container div {
+    margin: 2px;
+    width: 300px;
+}
+
+.container div:hover {
+    cursor: pointer;
+}
+
+.product_image {
+    object-fit: cover;
+}
+
+.header h5 {
+    margin: 1%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}

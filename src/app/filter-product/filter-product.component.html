@@ -1,0 +1,23 @@
+<div class="header">
+    <h5>{{header}}</h5>
+
+</div>
+
+
+<div class="container">
+
+    <div *ngFor="let product of products">
+        <div (click)="routeDetail(product.id)" class="Spacer__SpacerStyled-sc-11kae1j-0 fglWdr Boxstyle__BoxStyled-h0e1j3-0 fLetif Cardstyle__CardStyled-v4il1t-0 iUeSPP ProductCardstyles__ProductCardStyled-sc-12t6nbg-0 bVWoli">
+            <img class="product_image" style="height:300px;" [src]="product.image_list[0] | sanitizer" alt="ürün">
+            <div class="Spacer__SpacerStyled-sc-11kae1j-0 faZVQs Boxstyle__BoxStyled-h0e1j3-0 jzdUSm">
+                <p class="Typographystyles__TypographyStyled-gtxex0-0 hxopMc">{{product.city_name | formatcity}}</p>
+                <p class="Typographystyles__TypographyStyled-gtxex0-0 dIA-dSO ProductCardNamestyles__ProductCardNameStyled-txambz-0 kvWtlo">{{product.header}} </p>
+                <p class="Typographystyles__TypographyStyled-gtxex0-0 hxopMc">{{product.category}}</p>
+                <p class="Typographystyles__TypographyStyled-gtxex0-0 dIA-dSO"><span>{{product.price | currency:'TL'}}</span></p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

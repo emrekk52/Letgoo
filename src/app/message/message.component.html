@@ -1,0 +1,106 @@
+<main class="content">
+    <div class="container p-0">
+
+        <h1 class="h3 mb-3">Mesajlar</h1>
+
+        <div class="card">
+            <div class="row g-0">
+
+                <!--  Mesajlaşılan kişiler -->
+
+                <div class="col-12 col-lg-5 col-xl-3 border-right">
+
+                    <div class="px-4 d-none d-md-block">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <input (keyup)="search()" [(ngModel)]="filter" type="text" class="form-control my-3" placeholder="Ara">
+                            </div>
+                        </div>
+                    </div>
+
+                    <a [style.background]="mes.product.id == chooseMessage.product.id ? '#f2f2f2' : 'white' " *ngFor="let mes of filteredMessages" class="list-group-item list-group-item-action border-0">
+
+                        <div (click)="chooseMessage=mes;" class="d-flex align-items-start pr-cursor">
+                            <div class="icon-container">
+                                <img [src]="sanitizer(mes.user.photo_url)" class="rounded-circle mr-1">
+                                <div class="status-circle">
+                                    <img [src]="sanitizer(mes.product.image_list[0])">
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 ml-3">
+                                {{mes.user.name}} {{mes.user.surname}}
+                                <div class="small"> {{mes.messageList[mes.messageList.length-1].message}}</div>
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <hr class="d-block d-lg-none mt-1 mb-0">
+                </div>
+
+
+                <!--  Mesajlaşma ekranı -->
+
+                <div class="col-12 col-lg-7 col-xl-9">
+                    <div class="py-2 px-4 border-bottom d-none d-lg-block">
+                        <div class="d-flex align-items-center py-1">
+
+                            <div class="position-relative">
+                                <img (click)="goToProfile()" [src]="sanitizer(chooseMessage.user.photo_url)" class="rounded-circle mr-1 pr-cursor" width="40" height="40">
+                            </div>
+                            <div class="flex-grow-1 pl-3">
+                                <strong>{{chooseMessage.user.name}} {{chooseMessage.user.surname}}</strong>
+                                <div style="color:black;font-weight:bold;">{{chooseMessage.user.city}}</div>
+                            </div>
+
+
+                            <div style="width:50%;" (click)="goToProductDetail()" class="d-flex align-items-center py-1 pr-cursor">
+                                <div class="position-relative">
+                                    <img [src]="sanitizer(chooseMessage.product.image_list[0])" class="rounded-circle mr-1" width="40" height="40">
+                                </div>
+                                <div style="white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;" class="flex-grow-2 pl-3">
+                                    <strong>{{chooseMessage.product.header}}</strong>
+                                    <div class="text-muted">{{chooseMessage.product.category}}</div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="position-relative">
+                        <div class="chat-messages p-4">
+
+                            <div *ngFor="let mes of chooseMessage.messageList" id="msg" [class]="mes.sender_id==myUser.id ? 'chat-message-right pb-4' : 'chat-message-left pb-4'">
+                                <div>
+                                    <img [src]="mes.sender_id==myUser.id ? sanitizer(myUser.photo_url) : sanitizer(chooseMessage.user.photo_url)" class="rounded-circle mr-1" width="40" height="40">
+                                    <div class="text-muted small text-nowrap mt-2">{{mes.created_date | date:'hh:mm dd/MM'}}</div>
+                                </div>
+                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
+                                    <div class="font-weight-bold mb-1">{{mes.sender_id==myUser.id ? 'Sen' : concatName(chooseMessage.user) }}</div>
+                                    {{mes.message}}
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="flex-grow-0 py-3 px-4 border-top">
+                        <div class="input-group">
+                            <input [(ngModel)]="writeMessage" required type="text" class="form-control" placeholder="Mesajınızı yazınız">
+                            <button (click)="postMessage()" class="btn btn-primary">Gönder</button>
+                        </div>
+                    </div>
+                    <p *ngIf="isEmptyWarning>''" [innerHTML]="isEmptyWarning" class="px-4 notification-text"></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
